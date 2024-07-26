@@ -145,7 +145,7 @@ class EngineState:
 
     async def forward_request(self, request_info: models.RequestInfo):
         async with httpx.AsyncClient() as client:
-            async with client.stream("POST", "http://localhost:6910/generate", json=request_info.dict()) as response:
+            async with client.stream("POST", "http://64.21.190.97:9940/v1/chat/completions", json=request_info.dict()) as response:
                 response.raise_for_status()
                 async for line in response.aiter_lines():
                     if line:
